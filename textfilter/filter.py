@@ -88,15 +88,18 @@ if __name__ == "__main__":
     import time
     D = DFAFilter()
 
-    def test(afliter, name):
+    def test(D, name):
         print(name)
-        afliter.parse("keywords")
+        D.parse("keywords")
         t = time.time()
-        print(afliter.filter("法轮功 我操操操", "*"))
-        print(afliter.filter("针孔摄像机 我操操操", "*"))
-        print(afliter.filter("售假人民币 我操操操", "*"))
-        print(afliter.filter("传世私服 我操操操", "*"))
+        print(D.filter("法轮功 我操操操", "*"))
+        print(D.filter("针孔摄像机 我操操操", "*"))
+        print(D.filter("售假人民币 我操操操", "*"))
+        print(D.filter("传世私服 我操操操", "*"))
         print(time.time() - t)
+        D.add('AAA')
+        print(D.filter('aaa,AAA,aAa,aaAAAaa'))
 
     test(D, 'DFAFilter')
     test_first_character()
+
